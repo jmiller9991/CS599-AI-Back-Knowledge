@@ -21,7 +21,14 @@ def getAndModifyVideos():
             print('Looking at folder ' + dirString)
             for files in os.listdir(os.path.join(workingDir, x)):
                 if files.endswith('.mkv'):
-                    print(files)
+                    print('Working with file ' + os.path.join(dirString, files))
+                    vidCap = cv2.VideoCapture(os.listdir(os.path.join(dirString, files)))
+                    success, frame = vidCap.read()
+
+                    while success:
+                        cv2.imshow('Frame', frame)
+                        if cv2.waitKey(1) and 0xFF == ord('q'):
+                            break
 
 def main():
     global workingDir
