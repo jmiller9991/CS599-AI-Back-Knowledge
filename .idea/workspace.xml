@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="Begun work on looping through and getting all video frames">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataManip/VideoManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/VideoManip.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617664781713</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Begun work on looping through and getting all video frames">
+      <created>1617664914894</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617664914894</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options.">
+      <created>1617664976772</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617664976772</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,8 +205,9 @@
     <MESSAGE value="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225" />
     <MESSAGE value="Fixing commit data" />
     <MESSAGE value="Added gitignore" />
-    <MESSAGE value="Begun work on looping through and getting all video frames" />
     <MESSAGE value="Revert &quot;Create .gitignore&quot;&#10;&#10;This reverts commit bcf9d253" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;Create .gitignore&quot;&#10;&#10;This reverts commit bcf9d253" />
+    <MESSAGE value="Begun work on looping through and getting all video frames" />
+    <MESSAGE value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
+    <option name="LAST_COMMIT_MESSAGE" value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
   </component>
 </project>
