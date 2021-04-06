@@ -1,8 +1,8 @@
-#############################
-#  Jacob Miller   ###########
-#  4/1/2021       ###########
-#  VideoManip.py  ###########
-#############################
+################################################################################
+#  Jacob Miller   ##############################################################
+#  4/1/2021       ##############################################################
+#  VideoManip.py  ##############################################################
+################################################################################
 ################################################################################
 # This code will do pre-processing for video data ##############################
 ################################################################################
@@ -10,11 +10,15 @@
 import cv2
 import sys
 import os
+import math
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method will get the videos and save them as an array or arrays
 def getAndModifyVideos():
+    modWidth = math.floor(1920/2.5)
+    modHeight = math.floor(1080/2.5)
+    pathFileName = '.png'
     for x in os.listdir(workingDir):
         if x.startswith('GP'):
             dirString = os.path.join(workingDir, x)
@@ -24,12 +28,18 @@ def getAndModifyVideos():
                     print('Working with file ' + os.path.join(dirString, files))
                     vidCap = cv2.VideoCapture(os.path.join(dirString, files))
                     success, frame = vidCap.read()
+                    pathString = os.path.join(dirString, 'VideoFrames-' + str(modWidth) + '-' + str(modHeight))
+                    if (not os.path.exists(os.path.join(dirString, 'VideoFrames-' + str(modWidth) + '-' + str(modHeight)))):
+                        print('Making folder ' + pathString)
+                        os.mkdir(pathString)
                     count = 0
 
                     while success:
-                        print('Manipulating frame ' + str(count))
-
-
+                        print('Resizing frame ' + str(count) + ' to ' + str(modWidth) + ' ' + str(modHeight))
+                        newframe = cv2.resize(frame, (modWidth, modHeight))
+                        newFileName = 'frame' + str(count) + str(modWidth) + str(modHeight) + pathFileName
+                        print('Saving ' + os.path.join(pathString, newFileName), newframe)
+                        cv2.imwrite(os.path.join(pathString, newFileName), newframe)
                         count += 1
 def main():
     global workingDir
