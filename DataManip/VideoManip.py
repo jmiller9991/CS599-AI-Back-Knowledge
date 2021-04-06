@@ -38,7 +38,7 @@ def getAndModifyVideos():
                         print('Resizing frame ' + str(count) + ' to ' + str(modWidth) + ' ' + str(modHeight))
                         newframe = cv2.resize(frame, (modWidth, modHeight))
                         newFileName = 'frame' + str(count) + str(modWidth) + str(modHeight) + pathFileName
-                        print('Saving ' + os.path.join(pathString, newFileName), newframe)
+                        print('Saving ' + os.path.join(pathString, newFileName))
                         cv2.imwrite(os.path.join(pathString, newFileName), newframe)
                         count += 1
 def main():
