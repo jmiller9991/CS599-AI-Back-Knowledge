@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617734337956</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Created networks folder and started CNN for user input analysis.">
+      <created>1617735119802</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617735119802</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -238,6 +245,7 @@
     <MESSAGE value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
     <MESSAGE value="Needs to manipulate each frame." />
     <MESSAGE value="Finished manipulators, now working on cnn for controls." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished manipulators, now working on cnn for controls." />
+    <MESSAGE value="Created networks folder and started CNN for user input analysis." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created networks folder and started CNN for user input analysis." />
   </component>
 </project>
