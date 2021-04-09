@@ -16,6 +16,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 
+
+
+#This method manages and sets up the training model to prevent overworking the GPU
 def trainingModel():
     print('Training model!')
 
