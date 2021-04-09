@@ -260,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617935928061</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Begun work on file modification. Needs finishing but ran into a brief logic snag.">
+      <created>1617937263226</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1617937263226</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,6 +297,7 @@
     <MESSAGE value="Created networks folder and started CNN for user input analysis." />
     <MESSAGE value="Designed the model, it is currently untested." />
     <MESSAGE value="Added all appropriate methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all appropriate methods." />
+    <MESSAGE value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
+    <option name="LAST_COMMIT_MESSAGE" value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
   </component>
 </project>

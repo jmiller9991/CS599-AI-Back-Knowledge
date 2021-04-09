@@ -24,6 +24,14 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 def dataModAndGrab():
     images = []
     combindedVals = []
+    array = []
+
+    mwkExists = False
+    mwmExists = False
+    create = False
+
+    readMWK = ''
+    readMWW = ''
 
     for x in os.listdir(workingDir):
         if x.startswith('GP'):
@@ -31,11 +39,25 @@ def dataModAndGrab():
             print('Looking at folder ' + dirString)
             for files in os.listdir(dirString):
                 if files.startswith('MWK'):
-                    fileIn = files
-                    fileRead = open(fileIn, "r")
+                    mwkExists = True
+                    readMWK = files
+                if files.startswith('MWM'):
+                    mwmExists = True
+                    readMWW = files
+                if files.startswith('VideoFrames-'):
+                    print('Do Img To Array')
 
-                    for lines in fileRead:
-                        array = lines.split(',')
+            if mwmExists and mwkExists:
+                fileMWKRead = open(os.path.join(dirString, readMWK), "r")
+                fileMWMRead = open(os.path.join(dirString, readMWW), "r")
+
+                for lines in fileMWKRead:
+                    temparray = lines.split(',')
+                    array.append(temparray)
+
+                for lines in fileMWMRead:
+                    temparray = lines.split(',')
+                    array.append(temparray)
 
 
 
