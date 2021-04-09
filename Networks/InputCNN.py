@@ -16,7 +16,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 
-
+#This method sets up the content and retrieves all of the appropriate data
+def dataModAndGrab():
+    print('Data Mod and Grab')
 
 #This method manages and sets up the training model to prevent overworking the GPU
 def trainingModel():
