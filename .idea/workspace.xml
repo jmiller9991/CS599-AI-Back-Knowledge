@@ -267,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617937263226</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop.">
+      <created>1617942234773</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1617942234773</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,6 +305,7 @@
     <MESSAGE value="Designed the model, it is currently untested." />
     <MESSAGE value="Added all appropriate methods." />
     <MESSAGE value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
-    <option name="LAST_COMMIT_MESSAGE" value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
+    <MESSAGE value="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop." />
+    <option name="LAST_COMMIT_MESSAGE" value="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop." />
   </component>
 </project>

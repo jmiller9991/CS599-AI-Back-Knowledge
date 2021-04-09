@@ -23,12 +23,11 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 #This method sets up the content and retrieves all of the appropriate data
 def dataModAndGrab():
     images = []
-    combindedVals = []
+    combindedVals = np.empty((0, 1))
     array = []
 
     mwkExists = False
     mwmExists = False
-    create = False
 
     readMWK = ''
     readMWW = ''
@@ -58,6 +57,14 @@ def dataModAndGrab():
                 for lines in fileMWMRead:
                     temparray = lines.split(',')
                     array.append(temparray)
+
+                np.append(combindedVals, array, axis=0)
+
+                mwkExists = False
+                mwmExists = False
+
+                readMWK = ''
+                readMWW = ''
 
 
 
