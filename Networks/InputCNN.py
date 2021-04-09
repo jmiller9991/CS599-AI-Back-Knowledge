@@ -22,10 +22,22 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method sets up the content and retrieves all of the appropriate data
 def dataModAndGrab():
+    images = []
+    combindedVals = []
+
     for x in os.listdir(workingDir):
         if x.startswith('GP'):
             dirString = os.path.join(workingDir, x)
             print('Looking at folder ' + dirString)
+            for files in os.listdir(dirString):
+                if files.startswith('MWK'):
+                    fileIn = files
+                    fileRead = open(fileIn, "r")
+
+                    for lines in fileRead:
+                        array = lines.split(',')
+
+
 
     print('Data Mod and Grab')
 
