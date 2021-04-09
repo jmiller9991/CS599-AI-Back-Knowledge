@@ -246,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617929986962</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added all appropriate methods.">
+      <created>1617930161348</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1617930161348</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,6 +282,7 @@
     <MESSAGE value="Finished manipulators, now working on cnn for controls." />
     <MESSAGE value="Created networks folder and started CNN for user input analysis." />
     <MESSAGE value="Designed the model, it is currently untested." />
-    <option name="LAST_COMMIT_MESSAGE" value="Designed the model, it is currently untested." />
+    <MESSAGE value="Added all appropriate methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all appropriate methods." />
   </component>
 </project>

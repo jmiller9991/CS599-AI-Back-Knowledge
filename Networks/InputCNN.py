@@ -9,6 +9,8 @@
 # used as labels.                                                  ###############
 ##################################################################################
 
+import os
+import sys
 import numpy as np
 import tensorflow as tf
 import tensorflow.keras as ks
@@ -16,8 +18,15 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 
+workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+
 #This method sets up the content and retrieves all of the appropriate data
 def dataModAndGrab():
+    for x in os.listdir(workingDir):
+        if x.startswith('GP'):
+            dirString = os.path.join(workingDir, x)
+            print('Looking at folder ' + dirString)
+
     print('Data Mod and Grab')
 
 #This method manages and sets up the training model to prevent overworking the GPU
@@ -70,6 +79,12 @@ def buildModel(inputShape, classCnt):
 
 
 def main():
+    global workingDir
+
+    if len(sys.argv) > 2:
+        workingDir = sys.argv[1]
+
+
     print('Main')
 
 if __name__ == '__main__':
