@@ -17,12 +17,13 @@ import tensorflow.keras as ks
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
+import cv2
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
-#This method sets up the content and retrieves all of the appropriate data
-def dataModAndGrab():
-    images = []
+#This method sets up the content and retrieves data and strings per folder
+def dataModAndGrabPerFolder(folderVal):
+    imageArray = np.empty((0, 1))
     combindedVals = np.empty((0, 1))
     array = []
 
@@ -33,7 +34,7 @@ def dataModAndGrab():
     readMWW = ''
 
     for x in os.listdir(workingDir):
-        if x.startswith('GP'):
+        if x.startswith(folderVal):
             dirString = os.path.join(workingDir, x)
             print('Looking at folder ' + dirString)
             for files in os.listdir(dirString):
@@ -44,7 +45,12 @@ def dataModAndGrab():
                     mwmExists = True
                     readMWW = files
                 if files.startswith('VideoFrames-'):
-                    print('Do Img To Array')
+                    pathval = os.path.join(dirString, files)
+                    for img in os.listdir(pathval):
+                        images = cv2.imread(os.path.join(pathval, img))
+                        im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
+
+                        np.append(imageArray, im)
 
             if mwmExists and mwkExists:
                 fileMWKRead = open(os.path.join(dirString, readMWK), "r")
@@ -60,15 +66,9 @@ def dataModAndGrab():
 
                 np.append(combindedVals, array, axis=0)
 
-                mwkExists = False
-                mwmExists = False
-
-                readMWK = ''
-                readMWW = ''
+                return combindedVals, imageArray
 
 
-
-    print('Data Mod and Grab')
 
 #This method manages and sets up the training model to prevent overworking the GPU
 def trainingModel():
