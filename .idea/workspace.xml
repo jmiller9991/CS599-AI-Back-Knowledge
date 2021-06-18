@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManip/VideoManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/VideoManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -311,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618014896471</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixed CNN to modify before load not after.">
+      <created>1623974695403</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1623974695403</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,6 +334,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="Filler to update" />
     <MESSAGE value="test commit" />
     <MESSAGE value="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225" />
@@ -345,6 +352,7 @@
     <MESSAGE value="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop." />
     <MESSAGE value="Begun work on data collection. Need to make an array of frames for the video." />
     <MESSAGE value="Reformatted data so that it grabs the data one at at a time." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatted data so that it grabs the data one at at a time." />
+    <MESSAGE value="Fixed CNN to modify before load not after." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed CNN to modify before load not after." />
   </component>
 </project>

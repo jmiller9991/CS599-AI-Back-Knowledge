@@ -36,6 +36,7 @@ def dataModAndGrabPerFolder(folderVal):
     readMWK = ''
     readMWW = ''
 
+    print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
         if x.startswith(folderVal):
             dirString = os.path.join(workingDir, x)
@@ -44,19 +45,24 @@ def dataModAndGrabPerFolder(folderVal):
                 if files.startswith('MWK'):
                     mwkExists = True
                     readMWK = files
+                    print('MHK file found!')
                 if files.startswith('MWM'):
                     mwmExists = True
                     readMWW = files
+                    print('MWM file found!')
                 if files.startswith('VideoFrames-'):
                     pathval = os.path.join(dirString, files)
                     for img in os.listdir(pathval):
+                        print (f'Loading Video Frame ${os.path.join(pathval, img)}')
                         imageArray = np.concatenate([os.path.join(pathval, img)])
                         # images = cv2.imread(os.path.join(pathval, img))
                         # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
                         #
                         # imageArray = np.append(imageArray, im)
+                    print('Files Loaded')
 
             if mwmExists and mwkExists:
+                print('Concatenating MWK and MWM')
                 myfile1 = pd.read_csv(os.path.join(dirString, readMWK))
                 myfile2 = pd.read_csv(os.path.join(dirString, readMWW))
 
@@ -66,6 +72,7 @@ def dataModAndGrabPerFolder(folderVal):
                 combindedVals = np.concatenate([array1, array2])
 
                 print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combindedVals.shape}')
+                print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
                 # fileMWMRead = open(os.path.join(dirString, readMWW), "r")
