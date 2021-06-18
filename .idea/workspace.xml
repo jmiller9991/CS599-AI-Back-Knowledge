@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataManip/VideoManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/VideoManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,6 +54,27 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.VideoManip">
+    <configuration name="InputCNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MillerJ_CS599_Thesis_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Networks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Networks/InputCNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="TextManip" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MillerJ_CS599_Thesis_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,6 +120,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.VideoManip" />
+        <item itemvalue="Python.InputCNN" />
         <item itemvalue="Python.TextManip" />
       </list>
     </recent_temporary>
@@ -281,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617942632690</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Reformatted data so that it grabs the data one at at a time.">
+      <created>1618014896471</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1618014896471</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,6 +344,7 @@
     <MESSAGE value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
     <MESSAGE value="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop." />
     <MESSAGE value="Begun work on data collection. Need to make an array of frames for the video." />
-    <option name="LAST_COMMIT_MESSAGE" value="Begun work on data collection. Need to make an array of frames for the video." />
+    <MESSAGE value="Reformatted data so that it grabs the data one at at a time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformatted data so that it grabs the data one at at a time." />
   </component>
 </project>

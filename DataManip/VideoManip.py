@@ -16,6 +16,7 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method will get the videos and save them as an array or arrays
 def getAndModifyVideos():
+    skipframe = 1
     modWidth = math.floor(1920/2.5)
     modHeight = math.floor(1080/2.5)
     pathFileName = '.png'
@@ -37,10 +38,13 @@ def getAndModifyVideos():
                     while success:
                         print('Resizing frame ' + str(count) + ' to ' + str(modWidth) + ' ' + str(modHeight))
                         newframe = cv2.resize(frame, (modWidth, modHeight))
-                        newFileName = 'frame' + str(count) + str(modWidth) + str(modHeight) + pathFileName
-                        print('Saving ' + os.path.join(pathString, newFileName))
-                        cv2.imwrite(os.path.join(pathString, newFileName), newframe)
+                        newframe = cv2.cvtColor(newframe, cv2.COLOR_BGR2RGB)
+                        newFileName = 'frame' + '_' + str(modWidth) + '_' + str(modHeight) + '_' + "%05d" % count + pathFileName
+                        if count % skipframe == 0:
+                            print('Saving ' + os.path.join(pathString, newFileName))
+                            cv2.imwrite(os.path.join(pathString, newFileName), newframe)
                         count += 1
+                        success, frame = vidCap.read()
 def main():
     global workingDir
 

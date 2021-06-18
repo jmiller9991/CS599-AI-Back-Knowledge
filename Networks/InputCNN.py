@@ -18,14 +18,17 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 import cv2
+import pandas as pd
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method sets up the content and retrieves data and strings per folder
 def dataModAndGrabPerFolder(folderVal):
-    imageArray = np.empty((0, 1))
-    combindedVals = np.empty((0, 1))
-    array = []
+    numcol = 17
+    coltemp = 8
+    imageArray = np.empty((0, numcol))
+    combindedVals = np.empty((0, numcol))
+    array = np.empty((0, coltemp))
 
     mwkExists = False
     mwmExists = False
@@ -47,24 +50,35 @@ def dataModAndGrabPerFolder(folderVal):
                 if files.startswith('VideoFrames-'):
                     pathval = os.path.join(dirString, files)
                     for img in os.listdir(pathval):
-                        images = cv2.imread(os.path.join(pathval, img))
-                        im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
-
-                        np.append(imageArray, im)
+                        imageArray = np.concatenate([os.path.join(pathval, img)])
+                        # images = cv2.imread(os.path.join(pathval, img))
+                        # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
+                        #
+                        # imageArray = np.append(imageArray, im)
 
             if mwmExists and mwkExists:
-                fileMWKRead = open(os.path.join(dirString, readMWK), "r")
-                fileMWMRead = open(os.path.join(dirString, readMWW), "r")
+                myfile1 = pd.read_csv(os.path.join(dirString, readMWK))
+                myfile2 = pd.read_csv(os.path.join(dirString, readMWW))
 
-                for lines in fileMWKRead:
-                    temparray = lines.split(',')
-                    array.append(temparray)
+                array1 = myfile1.to_numpy(dtype=np.int)
+                array2 = myfile2.to_numpy(dtype=np.int)
 
-                for lines in fileMWMRead:
-                    temparray = lines.split(',')
-                    array.append(temparray)
+                combindedVals = np.concatenate([array1, array2])
 
-                np.append(combindedVals, array, axis=0)
+                print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combindedVals.shape}')
+
+                # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
+                # fileMWMRead = open(os.path.join(dirString, readMWW), "r")
+                #
+                # for lines in fileMWKRead:
+                #     temparray = [lines.split(',')]
+                #     array = np.append(array, temparray, axis=0)
+                #
+                # for lines in fileMWMRead:
+                #     temparray = [lines.split(',')]
+                #     array = np.append(array, temparray, axis=0)
+                #
+                # combindedVals = np.append(combindedVals, array, axis=0)
 
                 return combindedVals, imageArray
 
@@ -125,6 +139,7 @@ def main():
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
+    dataModAndGrabPerFolder('GP1')
 
     print('Main')
 
