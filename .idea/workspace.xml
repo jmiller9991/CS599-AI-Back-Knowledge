@@ -38,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -317,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623974695403</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Better Text">
+      <created>1623975176330</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1623975176330</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,6 +360,7 @@
     <MESSAGE value="Begun work on data collection. Need to make an array of frames for the video." />
     <MESSAGE value="Reformatted data so that it grabs the data one at at a time." />
     <MESSAGE value="Fixed CNN to modify before load not after." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed CNN to modify before load not after." />
+    <MESSAGE value="Better Text" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better Text" />
   </component>
 </project>

@@ -17,6 +17,7 @@ import tensorflow.keras as ks
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
+from tensorflow import data
 import cv2
 import pandas as pd
 
@@ -38,7 +39,9 @@ def dataModAndGrabPerFolder(folderVal):
 
     print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
-        if x.startswith(folderVal):
+        #made change here, will test later => if broken just folderVal
+        newFolderVal = folderVal if folderVal else 'GP'
+        if x.startswith(newFolderVal):
             dirString = os.path.join(workingDir, x)
             print('Looking at folder ' + dirString)
             for files in os.listdir(dirString):
@@ -92,8 +95,45 @@ def dataModAndGrabPerFolder(folderVal):
 
 
 #This method manages and sets up the training model to prevent overworking the GPU
-def trainingModel():
-    print('Training model!')
+def buildTrainingModel(dataStrings, inputImages, frameSkip):
+    print('Starting to Develop the Training Model...')
+    skipFrame = 5
+    newInputImages = np.empty(inputImages.shape)
+    newDataStrings = np.empty(dataStrings.shape)
+
+    if frameSkip:
+        print('Collecting images with frameskip...')
+        count = 0
+        for x in inputImages:
+            if count % skipFrame == 0:
+                print(f'Adding Frame {count}')
+                image = tf.io.read_file(x)
+                newInputImages = np.concatenate([image])
+            count += 1
+
+        count2 = 0
+        for y in dataStrings:
+            if count2 % skipFrame == 0:
+                print(f'Adding Data {count2}')
+                newDataStrings = np.concatenate([y])
+
+    else:
+        print('Collecting images without frameskip...')
+        for x in inputImages:
+            print('Adding images...')
+            image = tf.io.read_file(x)
+            newInputImages = np.concatenate([image])
+
+        for y in dataStrings:
+            print('Adding data...')
+            newDataStrings = np.concatenate([y])
+
+    dataVal = data.Dataset.from_tensor_slices((newInputImages, newDataStrings))
+
+    print('Data Collected')
+
+    return dataVal
+
 
 #This method builds and compiles a model
 def buildModel(inputShape, classCnt):
@@ -146,7 +186,10 @@ def main():
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
-    dataModAndGrabPerFolder('GP1')
+    combindedVals, imageArray = dataModAndGrabPerFolder('GP1')
+
+    train_temp = buildTrainingModel(combindedVals, imageArray, True)
+
 
     print('Main')
 
