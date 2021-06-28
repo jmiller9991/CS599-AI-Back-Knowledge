@@ -57,7 +57,7 @@ def dataModAndGrabPerFolder(folderVal):
                     pathval = os.path.join(dirString, files)
                     for img in os.listdir(pathval):
                         print (f'Loading Video Frame ${os.path.join(pathval, img)}')
-                        imageArray = np.concatenate([os.path.join(pathval, img)])
+                        imageArray = np.append(imageArray, [os.path.join(pathval, img)])
                         # images = cv2.imread(os.path.join(pathval, img))
                         # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
                         #
@@ -72,7 +72,7 @@ def dataModAndGrabPerFolder(folderVal):
                 array1 = myfile1.to_numpy(dtype=np.int)
                 array2 = myfile2.to_numpy(dtype=np.int)
 
-                combindedVals = np.concatenate([array1, array2])
+                combindedVals = np.append(combindedVals, [array1, array2])
 
                 print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combindedVals.shape}')
                 print('Files Concatenated')
@@ -108,25 +108,25 @@ def buildTrainingModel(dataStrings, inputImages, frameSkip):
             if count % skipFrame == 0:
                 print(f'Adding Frame {count}')
                 image = tf.io.read_file(x)
-                newInputImages = np.concatenate([image])
+                newInputImages = np.append(newInputImages, [image])
             count += 1
 
         count2 = 0
         for y in dataStrings:
             if count2 % skipFrame == 0:
                 print(f'Adding Data {count2}')
-                newDataStrings = np.concatenate([y])
+                newDataStrings = np.append(newDataStrings, [y])
 
     else:
         print('Collecting images without frameskip...')
         for x in inputImages:
             print('Adding images...')
             image = tf.io.read_file(x)
-            newInputImages = np.concatenate([image])
+            newInputImages = np.append(newInputImages, [image])
 
         for y in dataStrings:
             print('Adding data...')
-            newDataStrings = np.concatenate([y])
+            newDataStrings = np.append(newDataStrings, [y])
 
     dataVal = data.Dataset.from_tensor_slices((newInputImages, newDataStrings))
 
@@ -188,7 +188,7 @@ def main():
 
     combindedVals, imageArray = dataModAndGrabPerFolder('GP1')
 
-    train_temp = buildTrainingModel(combindedVals, imageArray, True)
+    data = buildTrainingModel(combindedVals, imageArray, True)
 
 
     print('Main')
