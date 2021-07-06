@@ -138,8 +138,6 @@ def buildTrainingModel(datastrings, inputimages):
     super_list_frame = []
     super_list_label = []
 
-    #suggestions: pretrained faster RCNN, YOLO | find a segmentation network, like self-driving car
-
     for i in range(0, len(inputimages), 20):
         super_list_frame.append(inputimages[i:(i + 20)])
 
