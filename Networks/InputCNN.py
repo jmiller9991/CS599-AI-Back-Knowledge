@@ -27,12 +27,12 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 def dataModAndGrabPerFolder(folderVal):
     numcol = 17
     coltemp = 8
-    imageArray = np.empty((0, numcol))
-    combindedVals = np.empty((0, numcol))
+    image_array = np.empty((0, numcol))
+    combinded_vals = np.empty((0, numcol))
     array = np.empty((0, coltemp))
 
-    mwkExists = False
-    mwmExists = False
+    mwk_exists = False
+    mwm_exists = False
 
     readMWK = ''
     readMWW = ''
@@ -40,41 +40,41 @@ def dataModAndGrabPerFolder(folderVal):
     print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
         #made change here, will test later => if broken just folderVal
-        newFolderVal = folderVal if folderVal else 'GP'
-        if x.startswith(newFolderVal):
-            dirString = os.path.join(workingDir, x)
-            print('Looking at folder ' + dirString)
-            for files in os.listdir(dirString):
+        new_folder_val = folderVal if folderVal else 'GP'
+        if x.startswith(new_folder_val):
+            dir_string = os.path.join(workingDir, x)
+            print('Looking at folder ' + dir_string)
+            for files in os.listdir(dir_string):
                 if files.startswith('MWK'):
-                    mwkExists = True
+                    mwk_exists = True
                     readMWK = files
                     print('MHK file found!')
                 if files.startswith('MWM'):
-                    mwmExists = True
+                    mwm_exists = True
                     readMWW = files
                     print('MWM file found!')
                 if files.startswith('VideoFrames-'):
-                    pathval = os.path.join(dirString, files)
+                    pathval = os.path.join(dir_string, files)
                     for img in os.listdir(pathval):
                         print (f'Loading Video Frame ${os.path.join(pathval, img)}')
-                        imageArray = np.append(imageArray, [os.path.join(pathval, img)])
+                        image_array = np.append(image_array, [os.path.join(pathval, img)])
                         # images = cv2.imread(os.path.join(pathval, img))
                         # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
                         #
                         # imageArray = np.append(imageArray, im)
                     print('Files Loaded')
 
-            if mwmExists and mwkExists:
+            if mwm_exists and mwk_exists:
                 print('Concatenating MWK and MWM')
-                myfile1 = pd.read_csv(os.path.join(dirString, readMWK))
-                myfile2 = pd.read_csv(os.path.join(dirString, readMWW))
+                myfile1 = pd.read_csv(os.path.join(dir_string, readMWK))
+                myfile2 = pd.read_csv(os.path.join(dir_string, readMWW))
 
                 array1 = myfile1.to_numpy(dtype=np.int)
                 array2 = myfile2.to_numpy(dtype=np.int)
 
-                combindedVals = np.append(combindedVals, [array1, array2])
+                combinded_vals = np.append(combinded_vals, [array1, array2])
 
-                print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combindedVals.shape}')
+                print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
                 print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
@@ -90,49 +90,73 @@ def dataModAndGrabPerFolder(folderVal):
                 #
                 # combindedVals = np.append(combindedVals, array, axis=0)
 
-                return combindedVals, imageArray
+                return combinded_vals, image_array
 
 
+
+#This method manages and sets up the training model to prevent overworking the GPU = old method
+# #def buildTrainingModel(dataStrings, inputImages, frameSkip):
+#     print('Starting to Develop the Training Model...')
+#     skipFrame = 5
+#     superListFrame = []
+#     superListLabel = []
+#
+#     if frameSkip:
+#       print('Collecting images with frameskip...')
+#       count = 0
+#       for x in inputImages:
+#           if count % skipFrame == 0:
+#               print(f'Adding Frame {count}')
+#               image = tf.io.read_file(x)
+#               # image = cv2.imread(x)
+#               # newImage = np.asarray(image)
+#               newInputImages = np.append(newInputImages, [image])
+#           count += 1
+#
+#           count2 = 0
+#           for y in dataStrings:
+#           if count2 % skipFrame == 0:
+#               print(f'Adding Data {count2}')
+#               newDataStrings = np.append(newDataStrings, [y])
+#
+#     else:
+#       print('Collecting images without frameskip...')
+#       for x in inputImages:
+#           print('Adding images...')
+#           image = tf.io.read_file(x)
+#           newInputImages = np.append(newInputImages, [image])
+#
+#       for y in dataStrings:
+#           print('Adding data...')
+#           newDataStrings = np.append(newDataStrings, [y])
 
 #This method manages and sets up the training model to prevent overworking the GPU
-def buildTrainingModel(dataStrings, inputImages, frameSkip):
+def buildTrainingModel(datastrings, inputimages):
     print('Starting to Develop the Training Model...')
-    skipFrame = 5
-    newInputImages = np.empty(inputImages.shape)
-    newDataStrings = np.empty(dataStrings.shape)
+    skip_frame = 5
+    #superLists are list that divide training sets into groups of 60 (variable) frames and labels
+    super_list_frame = []
+    super_list_label = []
 
-    if frameSkip:
-        print('Collecting images with frameskip...')
-        count = 0
-        for x in inputImages:
-            if count % skipFrame == 0:
-                print(f'Adding Frame {count}')
-                image = tf.io.read_file(x)
-                newInputImages = np.append(newInputImages, [image])
-            count += 1
+    #suggestions: pretrained faster RCNN, YOLO | find a segmentation network, like self-driving car
 
-        count2 = 0
-        for y in dataStrings:
-            if count2 % skipFrame == 0:
-                print(f'Adding Data {count2}')
-                newDataStrings = np.append(newDataStrings, [y])
+    for i in range(0, len(inputimages), 20):
+        super_list_frame.append(inputimages[i:(i + 20)])
 
-    else:
-        print('Collecting images without frameskip...')
-        for x in inputImages:
-            print('Adding images...')
-            image = tf.io.read_file(x)
-            newInputImages = np.append(newInputImages, [image])
+    for i in range(0, len(datastrings), 20):
+        super_list_label.append(datastrings[i:(i + 20)])
 
-        for y in dataStrings:
-            print('Adding data...')
-            newDataStrings = np.append(newDataStrings, [y])
+    imageset = tf.data.Dataset.from_tensor_slices(super_list_frame)
+    dataset = tf.data.Dataset.from_tensor_slices(super_list_label)
 
-    dataVal = data.Dataset.from_tensor_slices((newInputImages, newDataStrings))
+    data_map = tf.data.Dataset.map(imageset, dataset)
+
+    data_zip = tf.data.Dataset.zip(data_map)
 
     print('Data Collected')
 
-    return dataVal
+    return data_map, data_zip
+
 
 
 #This method builds and compiles a model
@@ -186,10 +210,9 @@ def main():
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
-    combindedVals, imageArray = dataModAndGrabPerFolder('GP1')
+    combinded_vals, image_array = dataModAndGrabPerFolder('GP1')
 
-    data = buildTrainingModel(combindedVals, imageArray, True)
-
+    _, data_zipped = buildTrainingModel(combinded_vals, image_array)
 
     print('Main')
 

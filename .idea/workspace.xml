@@ -331,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624502987775</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixed array errors">
+      <created>1624920401110</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1624920401110</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,6 +376,7 @@
     <MESSAGE value="Fixed CNN to modify before load not after." />
     <MESSAGE value="Better Text" />
     <MESSAGE value="Added training loop and modifier for string" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added training loop and modifier for string" />
+    <MESSAGE value="Fixed array errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed array errors" />
   </component>
 </project>
