@@ -138,11 +138,11 @@ def buildTrainingModel(datastrings, inputimages):
     super_list_frame = []
     super_list_label = []
 
-    for i in range(0, len(inputimages), 20):
-        super_list_frame.append(inputimages[i:(i + 20)])
+    for i in range(0, len(inputimages), 60):
+        super_list_frame.append(inputimages[i:(i + 60)])
 
-    for i in range(0, len(datastrings), 20):
-        super_list_label.append(datastrings[i:(i + 20)])
+    for i in range(0, len(datastrings), 60):
+        super_list_label.append(datastrings[i:(i + 60)])
 
     imageset = tf.data.Dataset.from_tensor_slices(super_list_frame)
     dataset = tf.data.Dataset.from_tensor_slices(super_list_label)

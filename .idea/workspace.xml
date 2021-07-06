@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -338,7 +337,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624920401110</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Naming refactor and change dataset mapping">
+      <created>1625540178576</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1625540178576</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Naming refactor and change dataset mapping">
+      <created>1625540244210</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1625540244210</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,6 +390,7 @@
     <MESSAGE value="Better Text" />
     <MESSAGE value="Added training loop and modifier for string" />
     <MESSAGE value="Fixed array errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed array errors" />
+    <MESSAGE value="Naming refactor and change dataset mapping" />
+    <option name="LAST_COMMIT_MESSAGE" value="Naming refactor and change dataset mapping" />
   </component>
 </project>
