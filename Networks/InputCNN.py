@@ -133,16 +133,16 @@ def dataModAndGrabPerFolder(folderVal):
 #This method manages and sets up the training model to prevent overworking the GPU
 def buildTrainingModel(datastrings, inputimages):
     print('Starting to Develop the Training Model...')
-    skip_frame = 5
+    group_size = 60
     #superLists are list that divide training sets into groups of 60 (variable) frames and labels
     super_list_frame = []
     super_list_label = []
 
-    for i in range(0, len(inputimages), 60):
-        super_list_frame.append(inputimages[i:(i + 60)])
+    for i in range(0, len(inputimages), group_size):
+        super_list_frame.append(inputimages[i:(i + group_size)])
 
-    for i in range(0, len(datastrings), 60):
-        super_list_label.append(datastrings[i:(i + 60)])
+    for i in range(0, len(datastrings), group_size):
+        super_list_label.append(datastrings[i:(i + group_size)])
 
     imageset = tf.data.Dataset.from_tensor_slices(super_list_frame)
     dataset = tf.data.Dataset.from_tensor_slices(super_list_label)
