@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataManip/TextManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/TextManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.InputCNN">
+  <component name="RunManager" selected="Python.TextManip">
     <configuration name="InputCNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MillerJ_CS599_Thesis_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,9 +119,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.TextManip" />
         <item itemvalue="Python.InputCNN" />
         <item itemvalue="Python.VideoManip" />
-        <item itemvalue="Python.TextManip" />
       </list>
     </recent_temporary>
   </component>
@@ -359,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625540355321</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="made 60 a variable">
+      <created>1625540973218</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1625540973218</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -400,6 +408,7 @@
     <MESSAGE value="Fixed array errors" />
     <MESSAGE value="Naming refactor and change dataset mapping" />
     <MESSAGE value="Changed size of data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed size of data" />
+    <MESSAGE value="made 60 a variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="made 60 a variable" />
   </component>
 </project>

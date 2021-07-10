@@ -25,11 +25,11 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method sets up the content and retrieves data and strings per folder
 def dataModAndGrabPerFolder(folderVal):
-    numcol = 17
+    #add 2D array modification
+    numcol = 18
     coltemp = 8
     image_array = np.empty((0, numcol))
     combinded_vals = np.empty((0, numcol))
-    array = np.empty((0, coltemp))
 
     mwk_exists = False
     mwm_exists = False
@@ -40,6 +40,7 @@ def dataModAndGrabPerFolder(folderVal):
     print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
         #made change here, will test later => if broken just folderVal
+        count = 0
         new_folder_val = folderVal if folderVal else 'GP'
         if x.startswith(new_folder_val):
             dir_string = os.path.join(workingDir, x)
@@ -57,7 +58,8 @@ def dataModAndGrabPerFolder(folderVal):
                     pathval = os.path.join(dir_string, files)
                     for img in os.listdir(pathval):
                         print (f'Loading Video Frame ${os.path.join(pathval, img)}')
-                        image_array = np.append(image_array, [os.path.join(pathval, img)])
+                        image_array = np.append(image_array, [count, os.path.join(pathval, img)])
+                        count += 1
                         # images = cv2.imread(os.path.join(pathval, img))
                         # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
                         #
@@ -72,9 +74,11 @@ def dataModAndGrabPerFolder(folderVal):
                 array1 = myfile1.to_numpy(dtype=np.int)
                 array2 = myfile2.to_numpy(dtype=np.int)
 
+                print(f'b4: array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
+
                 combinded_vals = np.append(combinded_vals, [array1, array2])
 
-                print(f'array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
+                print(f'aftr: array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
                 print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
@@ -97,7 +101,7 @@ def dataModAndGrabPerFolder(folderVal):
 #This method manages and sets up the training model to prevent overworking the GPU = old method
 # #def buildTrainingModel(dataStrings, inputImages, frameSkip):
 #     print('Starting to Develop the Training Model...')
-#     skipFrame = 5
+#     skipFrame = 3
 #     superListFrame = []
 #     superListLabel = []
 #
@@ -133,7 +137,7 @@ def dataModAndGrabPerFolder(folderVal):
 #This method manages and sets up the training model to prevent overworking the GPU
 def buildTrainingModel(datastrings, inputimages):
     print('Starting to Develop the Training Model...')
-    group_size = 60
+    group_size = 50
     #superLists are list that divide training sets into groups of 60 (variable) frames and labels
     super_list_frame = []
     super_list_label = []
