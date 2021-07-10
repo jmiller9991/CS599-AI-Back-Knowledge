@@ -31,11 +31,9 @@ def dataModAndGrabPerFolder(folderVal):
     image_array = np.empty((0, numcol))
     combinded_vals = np.empty((0, numcol))
 
-    mwk_exists = False
-    mwm_exists = False
+    mwmk_exists = False
 
-    readMWK = ''
-    readMWW = ''
+    read_MWMK = ''
 
     print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
@@ -46,14 +44,10 @@ def dataModAndGrabPerFolder(folderVal):
             dir_string = os.path.join(workingDir, x)
             print('Looking at folder ' + dir_string)
             for files in os.listdir(dir_string):
-                if files.startswith('MWK'):
-                    mwk_exists = True
-                    readMWK = files
-                    print('MHK file found!')
-                if files.startswith('MWM'):
-                    mwm_exists = True
-                    readMWW = files
-                    print('MWM file found!')
+                if files.startswith('MWMK'):
+                    mwmk_exists = True
+                    read_MWMK = files
+                    print('MWMK file found!')
                 if files.startswith('VideoFrames-'):
                     pathval = os.path.join(dir_string, files)
                     for img in os.listdir(pathval):
@@ -66,19 +60,17 @@ def dataModAndGrabPerFolder(folderVal):
                         # imageArray = np.append(imageArray, im)
                     print('Files Loaded')
 
-            if mwm_exists and mwk_exists:
+            if mwmk_exists:
                 print('Concatenating MWK and MWM')
-                myfile1 = pd.read_csv(os.path.join(dir_string, readMWK))
-                myfile2 = pd.read_csv(os.path.join(dir_string, readMWW))
+                myfile1 = pd.read_csv(os.path.join(dir_string, read_MWMK))
 
                 array1 = myfile1.to_numpy(dtype=np.int)
-                array2 = myfile2.to_numpy(dtype=np.int)
 
-                print(f'b4: array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
+                print(f'b4: array1: ${array1.shape}, combinedVals: ${combinded_vals.shape}')
 
-                combinded_vals = np.append(combinded_vals, [array1, array2])
+                combinded_vals = np.append(combinded_vals, [array1])
 
-                print(f'aftr: array1: ${array1.shape}, array2: ${array2.shape}, combinedVals: ${combinded_vals.shape}')
+                print(f'aftr: array1: ${array1.shape}, combinedVals: ${combinded_vals.shape}')
                 print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")

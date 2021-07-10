@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManip/TextManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/TextManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TextManip">
+  <component name="RunManager" selected="Python.InputCNN">
     <configuration name="InputCNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MillerJ_CS599_Thesis_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -119,8 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TextManip" />
         <item itemvalue="Python.InputCNN" />
+        <item itemvalue="Python.TextManip" />
         <item itemvalue="Python.VideoManip" />
       </list>
     </recent_temporary>
@@ -367,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625540973218</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py">
+      <created>1625883564145</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1625883564145</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,6 +415,7 @@
     <MESSAGE value="Naming refactor and change dataset mapping" />
     <MESSAGE value="Changed size of data" />
     <MESSAGE value="made 60 a variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="made 60 a variable" />
+    <MESSAGE value="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py" />
   </component>
 </project>
