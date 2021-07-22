@@ -20,6 +20,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 from tensorflow import data
 import cv2
 import pandas as pd
+import math
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
@@ -28,8 +29,7 @@ def dataModAndGrabPerFolder(folderVal):
     #add 2D array modification
     numcol = 18
     coltemp = 8
-    image_array = np.empty((0, numcol))
-    combinded_vals = np.empty((0, numcol))
+    image_array = []
 
     mwmk_exists = False
 
@@ -51,8 +51,8 @@ def dataModAndGrabPerFolder(folderVal):
                 if files.startswith('VideoFrames-'):
                     pathval = os.path.join(dir_string, files)
                     for img in os.listdir(pathval):
-                        print (f'Loading Video Frame ${os.path.join(pathval, img)}')
-                        image_array = np.append(image_array, [count, os.path.join(pathval, img)])
+                        print (f'Loading Video Frame {os.path.join(pathval, img)}')
+                        image_array.append(os.path.join(pathval, img))
                         count += 1
                         # images = cv2.imread(os.path.join(pathval, img))
                         # im = cv2.cvtColor(images, cv2.COLOR_BGR2RGB)
@@ -60,17 +60,19 @@ def dataModAndGrabPerFolder(folderVal):
                         # imageArray = np.append(imageArray, im)
                     print('Files Loaded')
 
+            image_array = np.array(image_array)
+
             if mwmk_exists:
                 print('Concatenating MWK and MWM')
                 myfile1 = pd.read_csv(os.path.join(dir_string, read_MWMK))
 
-                array1 = myfile1.to_numpy(dtype=np.int)
+                combined_vals = myfile1.to_numpy(dtype=np.int)
 
-                print(f'b4: array1: ${array1.shape}, combinedVals: ${combinded_vals.shape}')
+                print(f'b4: imageArray: {image_array.shape} array1: {combined_vals.shape}')
 
-                combinded_vals = np.append(combinded_vals, [array1])
+                # combinded_vals = np.append(combinded_vals, [array1])
 
-                print(f'aftr: array1: ${array1.shape}, combinedVals: ${combinded_vals.shape}')
+                print(f'aftr: imageArray: {image_array.shape} array1: {combined_vals.shape}')
                 print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
@@ -86,9 +88,21 @@ def dataModAndGrabPerFolder(folderVal):
                 #
                 # combindedVals = np.append(combindedVals, array, axis=0)
 
-                return combinded_vals, image_array
+                return combined_vals, image_array
 
 
+def frameSort(image_array, combined_vals):
+    total_key_frames = combined_vals.shape[0]
+    key_inc = 3.75
+    key_index_float = 0
+    final_video_frames = []
+
+    for kindex in range(total_key_frames):
+        vid_index = math.floor(key_index_float)
+        final_video_frames.append(image_array[vid_index])
+        key_index_float += key_inc
+
+    return final_video_frames
 
 #This method manages and sets up the training model to prevent overworking the GPU = old method
 # #def buildTrainingModel(dataStrings, inputImages, frameSkip):
@@ -204,9 +218,15 @@ def main():
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
-    combinded_vals, image_array = dataModAndGrabPerFolder('GP1')
+    combinded_vals, image_array = dataModAndGrabPerFolder('GP2')
 
-    _, data_zipped = buildTrainingModel(combinded_vals, image_array)
+    final_video_frames = frameSort(image_array, combinded_vals)
+
+    numpy_final_video_frames = np.array(final_video_frames)
+
+    print(f'numpy_final_video_frames shape {numpy_final_video_frames.shape}')
+
+    _, data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
 
     print('Main')
 

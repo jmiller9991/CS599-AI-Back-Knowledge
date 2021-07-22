@@ -119,8 +119,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.InputCNN" />
-        <item itemvalue="Python.TextManip" />
         <item itemvalue="Python.VideoManip" />
+        <item itemvalue="Python.TextManip" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625883564145</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fixed InputCNN.py to fit new paradigm.">
+      <created>1625884358556</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1625884358556</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -391,7 +398,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Filler to update" />
     <MESSAGE value="test commit" />
     <MESSAGE value="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225" />
     <MESSAGE value="Fixing commit data" />
@@ -416,6 +422,7 @@
     <MESSAGE value="Changed size of data" />
     <MESSAGE value="made 60 a variable" />
     <MESSAGE value="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py" />
+    <MESSAGE value="Fixed InputCNN.py to fit new paradigm." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed InputCNN.py to fit new paradigm." />
   </component>
 </project>
