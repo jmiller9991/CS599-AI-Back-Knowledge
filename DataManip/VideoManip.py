@@ -17,8 +17,8 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 #This method will get the videos and save them as an array or arrays
 def getAndModifyVideos():
     skipframe = 1
-    modWidth = math.floor(1920/2.5)
-    modHeight = math.floor(1080/2.5)
+    modWidth = math.floor(1920/4.5)
+    modHeight = math.floor(1080/4.5)
     pathFileName = '.png'
     for x in os.listdir(workingDir):
         if x.startswith('GP'):

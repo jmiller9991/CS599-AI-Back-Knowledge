@@ -15,7 +15,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.keras as ks
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Dense, Dropout, Flatten
+from tensorflow.keras.layers import InputLayer, Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
 from tensorflow import data
 import cv2
@@ -104,41 +104,17 @@ def frameSort(image_array, combined_vals):
 
     return final_video_frames
 
-#This method manages and sets up the training model to prevent overworking the GPU = old method
-# #def buildTrainingModel(dataStrings, inputImages, frameSkip):
-#     print('Starting to Develop the Training Model...')
-#     skipFrame = 3
-#     superListFrame = []
-#     superListLabel = []
-#
-#     if frameSkip:
-#       print('Collecting images with frameskip...')
-#       count = 0
-#       for x in inputImages:
-#           if count % skipFrame == 0:
-#               print(f'Adding Frame {count}')
-#               image = tf.io.read_file(x)
-#               # image = cv2.imread(x)
-#               # newImage = np.asarray(image)
-#               newInputImages = np.append(newInputImages, [image])
-#           count += 1
-#
-#           count2 = 0
-#           for y in dataStrings:
-#           if count2 % skipFrame == 0:
-#               print(f'Adding Data {count2}')
-#               newDataStrings = np.append(newDataStrings, [y])
-#
-#     else:
-#       print('Collecting images without frameskip...')
-#       for x in inputImages:
-#           print('Adding images...')
-#           image = tf.io.read_file(x)
-#           newInputImages = np.append(newInputImages, [image])
-#
-#       for y in dataStrings:
-#           print('Adding data...')
-#           newDataStrings = np.append(newDataStrings, [y])
+#This method gets the file names as images
+def loadAsImg(imageArr):
+    ta = tf.TensorArray(tf.float32, size=0, dynamic_size=True)
+    for i in tf.range(imageArr.shape[0]):
+        rawImgData = tf.io.read_file(imageArr[i])
+        imgData = tf.io.decode_png(rawImgData)
+        conversion = tf.image.convert_image_dtype(imgData, tf.float32)
+        ta = ta.write(i, conversion)
+        # tf.print(conversion.shape)
+    return ta.stack()
+
 
 #This method manages and sets up the training model to prevent overworking the GPU
 def buildTrainingModel(datastrings, inputimages):
@@ -149,21 +125,31 @@ def buildTrainingModel(datastrings, inputimages):
     super_list_label = []
 
     for i in range(0, len(inputimages), group_size):
-        super_list_frame.append(inputimages[i:(i + group_size)])
+        x = inputimages[i:(i + group_size)]
+        if x.shape[0] == group_size:
+            super_list_frame.append(x)
+            print(f'shape x: {x.shape}')
 
     for i in range(0, len(datastrings), group_size):
-        super_list_label.append(datastrings[i:(i + group_size)])
+        y = datastrings[i:(i + group_size)]
+        if y.shape[0] == group_size:
+            super_list_label.append(y)
+            print(f'shape y: {y.shape}')
 
-    imageset = tf.data.Dataset.from_tensor_slices(super_list_frame)
+    np_list_frame = np.array(super_list_frame)
+
+    print(f'pm: {np_list_frame.shape}')
+
+    imageset = tf.data.Dataset.from_tensor_slices(np_list_frame)
     dataset = tf.data.Dataset.from_tensor_slices(super_list_label)
 
-    data_map = tf.data.Dataset.map(imageset, dataset)
+    data_map = imageset.map(loadAsImg)
 
-    data_zip = tf.data.Dataset.zip(data_map)
+    data_zip = tf.data.Dataset.zip((data_map, dataset))
 
     print('Data Collected')
 
-    return data_map, data_zip
+    return data_zip
 
 
 
@@ -180,7 +166,7 @@ def buildModel(inputShape, classCnt):
     model = Sequential()
 
     print('Developing CNN...')
-    model.add(Input(shape=inputShape))
+    model.add(InputLayer(input_shape=inputShape))
     model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
     model.add(TimeDistributed(MaxPooling2D(3)))
     model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
@@ -189,24 +175,24 @@ def buildModel(inputShape, classCnt):
     model.add(TimeDistributed(MaxPooling2D(3)))
     model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
     model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
+    # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
+    # model.add(TimeDistributed(MaxPooling2D(3)))
+    # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
+    # model.add(TimeDistributed(MaxPooling2D(3)))
     model.add(TimeDistributed(Flatten()))
 
     print('Developing Class Counter')
-    model.add(LSTM(128, return_state=True))
+    model.add(LSTM(128, return_sequences=True))
     model.add(Dense(128, activation='relu'))
     model.add(Dropout(rate=0.2))
-    model.add(Dense(classCnt, activation='softmax'))
+    model.add(Dense(classCnt, activation='sigmoid'))
 
     model.summary()
 
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['binary_accuracy', 'loss'])
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['binary_accuracy'])
 
     epochs = 200
-    batch_size = 200
+    batch_size = 1
 
     return model, epochs, batch_size
 
@@ -226,7 +212,18 @@ def main():
 
     print(f'numpy_final_video_frames shape {numpy_final_video_frames.shape}')
 
-    _, data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
+    data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
+
+    # data_zipped = data_zipped.batch(2)
+    # for thing in data_zipped:
+    #     print(thing[0].numpy().shape)
+    #     print(thing[1].numpy().shape)
+
+    model, epochs, batch_size = buildModel((50, 426, 240, 3), 29)
+
+    data_zipped = data_zipped.batch(batch_size)
+
+    model.fit(data_zipped, epochs=epochs, batch_size=batch_size)
 
     print('Main')
 
