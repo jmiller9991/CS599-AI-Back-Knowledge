@@ -15,12 +15,19 @@ workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
 #This method will modify the WK_ files in each GP# folder
 def modifyWMK(fileIn, fileOut):
+    win_len = 1920
+    win_width = 1080
     fileRead = open(fileIn, "r")
     fileWrite = open(fileOut, "w+")
 
     for line in fileRead:
         array = line.split(",")
         array.pop(0)
+        array.pop(18)
+        array.pop(18)
+        array.pop(18)
+        array.pop(18)
+        array.pop(18)
 
         worksarray = []
 

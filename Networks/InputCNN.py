@@ -24,6 +24,14 @@ import math
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
+def tempModifyDoc(combined_vals):
+    for line in combined_vals:
+        x = [18, 19]
+        line = np.delete(line, x)
+        print(line)
+
+    return combined_vals
+
 #This method sets up the content and retrieves data and strings per folder
 def dataModAndGrabPerFolder(folderVal):
     #add 2D array modification
@@ -32,6 +40,7 @@ def dataModAndGrabPerFolder(folderVal):
     image_array = []
 
     mwmk_exists = False
+    temp_mod = True
 
     read_MWMK = ''
 
@@ -73,6 +82,10 @@ def dataModAndGrabPerFolder(folderVal):
                 # combinded_vals = np.append(combinded_vals, [array1])
 
                 print(f'aftr: imageArray: {image_array.shape} array1: {combined_vals.shape}')
+
+                if temp_mod:
+                    combined_vals = tempModifyDoc(combined_vals)
+
                 print('Files Concatenated')
 
                 # fileMWKRead = open(os.path.join(dirString, readMWK), "r")
@@ -219,7 +232,7 @@ def main():
     #     print(thing[0].numpy().shape)
     #     print(thing[1].numpy().shape)
 
-    model, epochs, batch_size = buildModel((50, 426, 240, 3), 29)
+    model, epochs, batch_size = buildModel((50, 426, 240, 3), 27)
 
     data_zipped = data_zipped.batch(batch_size)
 

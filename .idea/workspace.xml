@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManip/VideoManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/VideoManip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataManip/TextManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/TextManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Control-Modifications" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,8 +120,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.InputCNN" />
-        <item itemvalue="Python.VideoManip" />
         <item itemvalue="Python.TextManip" />
+        <item itemvalue="Python.VideoManip" />
       </list>
     </recent_temporary>
   </component>
@@ -390,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626996389387</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Multiple Changes.">
+      <created>1627941349122</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1627941349122</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,7 +413,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="test commit" />
     <MESSAGE value="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225" />
     <MESSAGE value="Fixing commit data" />
     <MESSAGE value="Added gitignore" />
@@ -433,6 +437,7 @@
     <MESSAGE value="made 60 a variable" />
     <MESSAGE value="Fixed TextManip.py for new paradigm and did testing modifications for InputCNN.py" />
     <MESSAGE value="Fixed InputCNN.py to fit new paradigm." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed InputCNN.py to fit new paradigm." />
+    <MESSAGE value="Multiple Changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple Changes." />
   </component>
 </project>
