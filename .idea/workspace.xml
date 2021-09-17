@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="" />
+    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/.idea/yolov3-tf2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/colab_gpu.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/conda-cpu.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/conda-gpu.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/convert.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/checkpoint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/coco.names" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/girl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/meme.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/meme2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/meme_out.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/street.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/street_out.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/voc2012.names" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/detect.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/detect_video.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/docs/training_voc.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/requirements-gpu.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/tools/export_tflite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/tools/export_tfserving.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/tools/visualize_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/tools/voc2012.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/yolov3_tf2/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/yolov3_tf2/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/yolov3_tf2/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/yolov3_tf2/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +76,18 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/yolov3_folder" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code\yolov3_folder" />
+      <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -408,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631905241209</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Multiple Changes.">
+      <created>1631905596697</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1631905596697</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
