@@ -28,6 +28,7 @@ def LucasKanadeOpticalFlow(videoString):
     ret, old_frame = capture.read()
     old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
     p0 = cv2.goodFeaturesToTrack(old_gray, mask=None, **feature_params)
+    print(p0.shape)
 
     mask = np.zeros_like(old_frame)
 

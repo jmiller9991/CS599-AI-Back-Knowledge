@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pathing/OpticalFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathing/OpticalFlow.py" afterDir="false" />
     </list>
@@ -65,7 +66,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.OpticalFlow">
+  <component name="RunManager" selected="Python.DenseOpticalFlow">
+    <configuration name="DenseOpticalFlow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MillerJ_CS599_Thesis_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pathing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="InputCNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MillerJ_CS599_Thesis_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,6 +174,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.DenseOpticalFlow" />
         <item itemvalue="Python.OpticalFlow" />
         <item itemvalue="Python.InputCNN" />
         <item itemvalue="Python.TextManip" />
@@ -471,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632951145321</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Removed Utils because it was unnecessary.">
+      <created>1633720035575</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1633720035575</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
