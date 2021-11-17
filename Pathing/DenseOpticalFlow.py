@@ -19,7 +19,7 @@ def DenseOpticalFlow(videoString, saveString):
     hsv = np.zeros_like(frame1)
     hsv[..., 1] = 255
 
-    while (True):
+    while (ret):
         ret, frame2 = cap.read()
         next = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
 
@@ -43,7 +43,7 @@ def DenseOpticalFlow(videoString, saveString):
     cv2.destroyAllWindows()
 
 def main():
-    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft1.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft1')
+    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft2.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft2')
 
 if __name__ == '__main__':
     main()

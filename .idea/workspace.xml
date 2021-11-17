@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pathing/OpticalFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathing/OpticalFlow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -501,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633720035575</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Updated OpticalFlow and created DenseOpticalFlow code">
+      <created>1634255031924</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1634255031924</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +527,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Revert &quot;Create .gitignore&quot;&#10;&#10;This reverts commit bcf9d253" />
     <MESSAGE value="Begun work on looping through and getting all video frames" />
     <MESSAGE value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
     <MESSAGE value="Needs to manipulate each frame." />
@@ -546,6 +551,7 @@
     <MESSAGE value="Added YOLOv3." />
     <MESSAGE value="Move some util files for best practice and added optical flow code." />
     <MESSAGE value="Removed Utils because it was unnecessary." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Utils because it was unnecessary." />
+    <MESSAGE value="Updated OpticalFlow and created DenseOpticalFlow code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated OpticalFlow and created DenseOpticalFlow code" />
   </component>
 </project>
