@@ -507,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634255031924</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Updated DenseOpticalFlow code">
+      <created>1637119068979</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1637119068979</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -527,7 +534,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Begun work on looping through and getting all video frames" />
     <MESSAGE value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
     <MESSAGE value="Needs to manipulate each frame." />
     <MESSAGE value="Finished manipulators, now working on cnn for controls." />
@@ -552,6 +558,7 @@
     <MESSAGE value="Move some util files for best practice and added optical flow code." />
     <MESSAGE value="Removed Utils because it was unnecessary." />
     <MESSAGE value="Updated OpticalFlow and created DenseOpticalFlow code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated OpticalFlow and created DenseOpticalFlow code" />
+    <MESSAGE value="Updated DenseOpticalFlow code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code" />
   </component>
 </project>

@@ -9,21 +9,26 @@
 ###################################################################################################################################################################
 
 import cv2
+import imageio
 import numpy as np
 
 def DenseOpticalFlow(videoString, saveString):
     cap = cv2.VideoCapture(videoString)
 
     ret, frame1 = cap.read()
+    print(frame1)
     prvs = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
     hsv = np.zeros_like(frame1)
     hsv[..., 1] = 255
 
+    gifframes = []
+
     while (ret):
         ret, frame2 = cap.read()
-        next = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
+        if ret:
+            next = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
 
-        flow = cv2.calcOpticalFlowFarneback(prvs, next, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+            flow = cv2.calcOpticalFlowFarneback(prvs, next, None, 0.5, 3, 15, 3, 5, 1.2, 0)
 
         mag, ang = cv2.cartToPolar(flow[..., 0], flow[..., 1])
         hsv[..., 0] = ang * 180 / np.pi / 2
@@ -37,13 +42,19 @@ def DenseOpticalFlow(videoString, saveString):
         elif k == ord('s'):
             cv2.imwrite(saveString + 'fb.png', frame2)
             cv2.imwrite(saveString + 'hsv.png', rgb)
-        prvs = next
+
+        if ret:
+            prvs = next
+
+        gifframes.append(rgb)
+
+    imageio.mimsave(saveString + '.gif', gifframes)
 
     cap.release()
     cv2.destroyAllWindows()
 
 def main():
-    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft2.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeft2')
+    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeftT.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeftT')
 
 if __name__ == '__main__':
     main()
