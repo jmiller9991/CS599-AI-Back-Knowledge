@@ -16,7 +16,6 @@ def DenseOpticalFlow(videoString, saveString):
     cap = cv2.VideoCapture(videoString)
 
     ret, frame1 = cap.read()
-    print(frame1)
     prvs = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
     hsv = np.zeros_like(frame1)
     hsv[..., 1] = 255

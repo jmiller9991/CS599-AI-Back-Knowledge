@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -514,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637119068979</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated DenseOpticalFlow code and added gif">
+      <created>1637622075624</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1637622075624</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +540,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Begun work on looping through and getting all video frames. Need to ask about weird pathing issue and best modification options." />
     <MESSAGE value="Needs to manipulate each frame." />
     <MESSAGE value="Finished manipulators, now working on cnn for controls." />
     <MESSAGE value="Created networks folder and started CNN for user input analysis." />
@@ -559,6 +564,7 @@
     <MESSAGE value="Removed Utils because it was unnecessary." />
     <MESSAGE value="Updated OpticalFlow and created DenseOpticalFlow code" />
     <MESSAGE value="Updated DenseOpticalFlow code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code" />
+    <MESSAGE value="Updated DenseOpticalFlow code and added gif" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code and added gif" />
   </component>
 </project>
