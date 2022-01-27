@@ -53,7 +53,7 @@ def DenseOpticalFlow(videoString, saveString):
     cv2.destroyAllWindows()
 
 def main():
-    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeftT.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\StrafeLeft\\StrafeLeftT')
+    DenseOpticalFlow('C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\TurnRight\\RightTurn5.mp4', 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays\\Movements\\TurnRight\\RightTurn5')
 
 if __name__ == '__main__':
     main()
