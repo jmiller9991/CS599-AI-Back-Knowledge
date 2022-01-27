@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Networks/MovementGuesser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathing/DenseOpticalFlow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Networks/MovementGuesser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/MovementGuesser.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -529,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637622195144</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Updated DenseOpticalFlow code and added MovementGuesser.py">
+      <created>1643254092846</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1643254092846</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -549,7 +555,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Needs to manipulate each frame." />
     <MESSAGE value="Finished manipulators, now working on cnn for controls." />
     <MESSAGE value="Created networks folder and started CNN for user input analysis." />
     <MESSAGE value="Designed the model, it is currently untested." />
@@ -574,6 +579,7 @@
     <MESSAGE value="Updated OpticalFlow and created DenseOpticalFlow code" />
     <MESSAGE value="Updated DenseOpticalFlow code" />
     <MESSAGE value="Updated DenseOpticalFlow code and added gif" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code and added gif" />
+    <MESSAGE value="Updated DenseOpticalFlow code and added MovementGuesser.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code and added MovementGuesser.py" />
   </component>
 </project>
