@@ -8,16 +8,21 @@
 # VideoManip.py and the control input from TextManip.py will be    ###############
 # used as labels.                                                  ###############
 ##################################################################################
-
 import sys
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import InputLayer, Dense, Dropout, Flatten
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM, TimeDistributed
+from tensorflow.python.keras import models as models
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import InputLayer, Dense, Dropout, Flatten
+from tensorflow.python.keras.layers import Conv2D, MaxPooling2D, LSTM
+from keras.layers import TimeDistributed
 import os
 import pandas as pd
 import math
+from datetime import datetime
+# from torch import nn
+# from torch.utils.data import DataLoader
+# from torchvision import datasets, transforms
 
 workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
 
@@ -37,13 +42,13 @@ def dataModAndGrabPerFolder(folderVal):
     image_array = []
 
     mwmk_exists = False
-    temp_mod = True
+    temp_mod = False
 
     read_MWMK = ''
 
     print('Starting Data Gathering...')
     for x in os.listdir(workingDir):
-        #made change here, will test later => if broken just folderVal
+        # made change here, will test later => if broken just folderVal
         count = 0
         new_folder_val = folderVal if folderVal else 'GP'
         if x.startswith(new_folder_val):
@@ -72,7 +77,7 @@ def dataModAndGrabPerFolder(folderVal):
                 print('Concatenating MWK and MWM')
                 myfile1 = pd.read_csv(os.path.join(dir_string, read_MWMK))
 
-                combined_vals = myfile1.to_numpy(dtype=np.int)
+                combined_vals = myfile1.to_numpy(dtype=np.int64)
 
                 print(f'b4: imageArray: {image_array.shape} array1: {combined_vals.shape}')
 
@@ -162,7 +167,7 @@ def buildTrainingModel(datastrings, inputimages):
     return data_zip
 
 #This method builds and compiles a model
-def buildModel(inputShape, classCnt):
+def buildModel(inputShape, classCnt, saveFile=None):
     # INPUT SHAPE
     # MUST BE (a, b, c, d)
     # Where: a is number of images entering
@@ -170,47 +175,89 @@ def buildModel(inputShape, classCnt):
     #        c is height of image
     #        d is number of channels in the image
 
-    print('Creating Model...')
-    model = Sequential()
+    if saveFile is not None:
+        model = models.load_model(saveFile)
+    else:
+        print('Creating Model...')
+        model = Sequential()
 
-    print('Developing CNN...')
-    model.add(InputLayer(input_shape=inputShape))
-    model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
-    model.add(TimeDistributed(MaxPooling2D(3)))
-    # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
-    # model.add(TimeDistributed(MaxPooling2D(3)))
-    # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
-    # model.add(TimeDistributed(MaxPooling2D(3)))
-    model.add(TimeDistributed(Flatten()))
+        print('Developing CNN...')
+        model.add(InputLayer(input_shape=inputShape))
+        model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
+        model.add(TimeDistributed(MaxPooling2D(3)))
+        model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
+        model.add(TimeDistributed(MaxPooling2D(3)))
+        model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
+        model.add(TimeDistributed(MaxPooling2D(3)))
+        model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
+        model.add(TimeDistributed(MaxPooling2D(3)))
+        # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
+        # model.add(TimeDistributed(MaxPooling2D(3)))
+        # model.add(TimeDistributed(Conv2D(filters=64, kernel_size=3, activation='relu')))
+        # model.add(TimeDistributed(MaxPooling2D(3)))
+        model.add(TimeDistributed(Flatten()))
 
-    print('Developing Class Counter')
-    model.add(LSTM(128, return_sequences=True))
-    model.add(Dense(128, activation='relu'))
-    model.add(Dropout(rate=0.2))
-    model.add(Dense(classCnt, activation='sigmoid'))
+        print('Developing Class Counter')
+        model.add(LSTM(128, return_sequences=True))
+        model.add(Dense(128, activation='relu'))
+        model.add(Dropout(rate=0.2))
+        model.add(Dense(classCnt, activation='sigmoid'))
 
-    model.summary()
+        model.summary()
 
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['binary_accuracy'])
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['binary_accuracy'])
 
-    epochs = 200
-    batch_size = 1
+        epochs = 200
+        batch_size = 1
 
     return model, epochs, batch_size
+
+
+# class TrainingModelExpirament(nn.Module):
+#     def __init__(self):
+#         super(TrainingModelExpirament, self).__init__()
+#         self.flatten = nn.Flatten()
+#         self.test_network_one = nn.Sequential(
+#
+#         )
+#
+#     def foward(self, x):
+#         x = self.flatten(x)
+#         logits = self.test_network_one(x)
+#         return logits
 
 
 
 def main():
     global workingDir
+    save_file = None
+    model_loc = None
 
-    if len(sys.argv) > 2:
+    if len(sys.argv) >= 2:
         workingDir = sys.argv[1]
+
+        if len(sys.argv) > 2:
+            model_loc_check = sys.argv[2]
+
+            if os.path.exists(model_loc_check):
+                model_loc = model_loc_check
+            else:
+                model_loc = None
+
+            if len(sys.argv) == 4:
+                save_check = sys.argv[3]
+
+                if save_check == 0 or save_check == True or str(save_check).lower() == "true":
+                    save_file = True
+                elif save_check == 1 or save_check == False or str(save_check).lower() == "false":
+                    save_file = False
+                else:
+                    print(f'You have listed a number of inputs but {sys.argv[3]} is not an acceptable input. Saving '
+                          f'will be set to false.')
+                    save_file = False
+        else:
+            model_loc = None
+
 
     combinded_vals, image_array = dataModAndGrabPerFolder('GP2')
 
@@ -220,22 +267,46 @@ def main():
 
     print(f'numpy_final_video_frames shape {numpy_final_video_frames.shape}')
 
-    data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
+    data_zipped = buildModel(combinded_vals, numpy_final_video_frames)
 
-    # data_zipped = data_zipped.batch(2)
+    # model = TrainingModelExpirament().to("cuda")
+    #
+    # if save_file:
+    #     pass
+    # else:
+    #     pass
+
+
+# data_zipped = data_zipped.batch(2)
     # for thing in data_zipped:
     #     print(thing[0].numpy().shape)
     #     print(thing[1].numpy().shape)
 
-    model, epochs, batch_size = buildModel((50, 426, 240, 3), 27)
+    model, epochs, batch_size = buildModel((50, 426, 240, 3), 4, model_loc)
+
+    curr_time = datetime.now()
+    model.save(f'/ModelFiles/InputCNN-{curr_time.year}-{curr_time.month}-{curr_time.day}:{curr_time.hour}:{curr_time.min}.keras')
 
     data_zipped = data_zipped.batch(batch_size)
 
+    start_time = int(datetime.now().timestamp())
+
     model.fit(data_zipped, epochs=epochs, batch_size=batch_size)
 
-    print('Main')
+    print(model.predict())
+
+    end_time = int(datetime.now().timestamp())
+
+    # | ||
+    # || |_
+
+
+    print(f'Run Time: {end_time - start_time}')
+
 
 if __name__ == '__main__':
     main()
 
+# cut down to WASD
+# Change frame window # for 25, 10, 1 etc
 

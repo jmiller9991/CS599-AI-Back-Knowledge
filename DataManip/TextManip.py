@@ -48,6 +48,8 @@ def modifyWMK(fileIn, fileOut):
 
         str = str[:-1]
 
+        str = str[:7]
+
         str += '\n'
 
         fileWrite.writelines(str)
