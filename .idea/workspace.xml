@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/yolov3_folder/yolov3-tf2/data/yolov3.tf.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networks/MovementGuesser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/MovementGuesser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,16 +44,19 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Pathing/OpticalFlow.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code\yolov3_folder\testimgs" />
       <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code\yolov3_folder" />
       <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code\yolov3_folder\yolov3-tf2\data" />
       <recent name="C:\Users\jdude\PycharmProjects\MillerJ_CS599_Thesis_Code" />
     </key>
   </component>
@@ -65,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DenseOpticalFlow">
+  <component name="RunManager" selected="Python.InputCNN">
     <configuration name="DenseOpticalFlow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MillerJ_CS599_Thesis_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,10 +180,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.DenseOpticalFlow" />
-        <item itemvalue="Python.OpticalFlow" />
         <item itemvalue="Python.InputCNN" />
         <item itemvalue="Python.TextManip" />
+        <item itemvalue="Python.DenseOpticalFlow" />
+        <item itemvalue="Python.OpticalFlow" />
         <item itemvalue="Python.VideoManip" />
       </list>
     </recent_temporary>
@@ -191,41 +198,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613616562689</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Filler to update">
-      <created>1617658075054</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1617658075054</updated>
-    </task>
-    <task id="LOCAL-00002" summary="test commit">
-      <created>1617659090814</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1617659090814</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225">
-      <created>1617659156240</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1617659156240</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Revert &quot;test commit&quot;&#10;&#10;This reverts commit 4d6f3225">
-      <created>1617659214273</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1617659214273</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fixing commit data">
-      <created>1617659386949</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1617659386949</updated>
     </task>
     <task id="LOCAL-00006" summary="Added gitignore">
       <created>1617659438996</created>
@@ -535,7 +507,42 @@
       <option name="project" value="LOCAL" />
       <updated>1643254092846</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Updated DenseOpticalFlow code and added MovementGuesser.py">
+      <created>1643254194472</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1643254194472</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Fixed text manip for movement, and added InputCNN changes">
+      <created>1724992523147</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1724992523147</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Fixed text manip for movement, and added InputCNN changes">
+      <created>1727299812170</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1727299812170</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Fixed text manip for movement, and added InputCNN changes">
+      <created>1727301441038</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1727301441038</updated>
+    </task>
+    <task id="LOCAL-00054" summary="removed large file from git through reverting to old commit and adding change">
+      <created>1727302349883</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1727302349883</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,8 +562,9 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
-    <MESSAGE value="Finished manipulators, now working on cnn for controls." />
-    <MESSAGE value="Created networks folder and started CNN for user input analysis." />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/yolov3-tf2" />
+    </ignored-roots>
     <MESSAGE value="Designed the model, it is currently untested." />
     <MESSAGE value="Added all appropriate methods." />
     <MESSAGE value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
@@ -580,6 +588,8 @@
     <MESSAGE value="Updated DenseOpticalFlow code" />
     <MESSAGE value="Updated DenseOpticalFlow code and added gif" />
     <MESSAGE value="Updated DenseOpticalFlow code and added MovementGuesser.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DenseOpticalFlow code and added MovementGuesser.py" />
+    <MESSAGE value="Fixed text manip for movement, and added InputCNN changes" />
+    <MESSAGE value="removed large file from git through reverting to old commit and adding change" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed large file from git through reverting to old commit and adding change" />
   </component>
 </project>

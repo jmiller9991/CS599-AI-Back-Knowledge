@@ -11,11 +11,12 @@
 import sys
 import numpy as np
 import tensorflow as tf
-from tensorflow.python.keras import models as models
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import InputLayer, Dense, Dropout, Flatten
-from tensorflow.python.keras.layers import Conv2D, MaxPooling2D, LSTM
-from keras.layers import TimeDistributed
+from tensorflow.keras import models as models
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import InputLayer, Dense, Dropout, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM
+#from keras.layers import TimeDistributed
+from tensorflow.keras.layers import TimeDistributed
 import os
 import pandas as pd
 import math
@@ -77,7 +78,7 @@ def dataModAndGrabPerFolder(folderVal):
                 print('Concatenating MWK and MWM')
                 myfile1 = pd.read_csv(os.path.join(dir_string, read_MWMK))
 
-                combined_vals = myfile1.to_numpy(dtype=np.int64)
+                combined_vals = myfile1.to_numpy(dtype=np.int_)
 
                 print(f'b4: imageArray: {image_array.shape} array1: {combined_vals.shape}')
 
@@ -181,6 +182,8 @@ def buildModel(inputShape, classCnt, saveFile=None):
         print('Creating Model...')
         model = Sequential()
 
+        print("Input:", inputShape)
+
         print('Developing CNN...')
         model.add(InputLayer(input_shape=inputShape))
         model.add(TimeDistributed(Conv2D(filters=128, kernel_size=6, activation='relu')))
@@ -267,7 +270,7 @@ def main():
 
     print(f'numpy_final_video_frames shape {numpy_final_video_frames.shape}')
 
-    data_zipped = buildModel(combinded_vals, numpy_final_video_frames)
+    data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
 
     # model = TrainingModelExpirament().to("cuda")
     #
