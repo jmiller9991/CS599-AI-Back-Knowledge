@@ -216,21 +216,6 @@ def buildModel(inputShape, classCnt, saveFile=None):
     return model, epochs, batch_size
 
 
-# class TrainingModelExpirament(nn.Module):
-#     def __init__(self):
-#         super(TrainingModelExpirament, self).__init__()
-#         self.flatten = nn.Flatten()
-#         self.test_network_one = nn.Sequential(
-#
-#         )
-#
-#     def foward(self, x):
-#         x = self.flatten(x)
-#         logits = self.test_network_one(x)
-#         return logits
-
-
-
 def main():
     global workingDir
     save_file = None
@@ -272,23 +257,13 @@ def main():
 
     data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
 
-    # model = TrainingModelExpirament().to("cuda")
-    #
-    # if save_file:
-    #     pass
-    # else:
-    #     pass
-
-
-# data_zipped = data_zipped.batch(2)
-    # for thing in data_zipped:
-    #     print(thing[0].numpy().shape)
-    #     print(thing[1].numpy().shape)
-
     model, epochs, batch_size = buildModel((50, 426, 240, 3), 4, model_loc)
 
     curr_time = datetime.now()
-    model.save(f'/ModelFiles/InputCNN-{curr_time.year}-{curr_time.month}-{curr_time.day}:{curr_time.hour}:{curr_time.min}.keras')
+    model_str = f'/ModelFiles/InputCNN-{curr_time.year}-{curr_time.month}-{curr_time.day}_{curr_time.hour}_{curr_time.minute}.keras'
+    print(f'YEAR: {curr_time.year} | MONTH: {curr_time.month} | DAY: {curr_time.day} | HOUR: {curr_time.hour} | MIN: {curr_time.minute}')
+    print(model_str)
+    model.save(model_str)
 
     data_zipped = data_zipped.batch(batch_size)
 
@@ -310,6 +285,5 @@ def main():
 if __name__ == '__main__':
     main()
 
-# cut down to WASD
 # Change frame window # for 25, 10, 1 etc
 
