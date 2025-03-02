@@ -11,6 +11,7 @@
 import sys
 import numpy as np
 import tensorflow as tf
+from tensorboard.summary.v1 import image
 from tensorflow.keras import models as models
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import InputLayer, Dense, Dropout, Flatten
@@ -21,11 +22,16 @@ import os
 import pandas as pd
 import math
 from datetime import datetime
+
+from tensorflow.python.ops.signal.shape_ops import frame
+
+# from matplotlib import pyplot as plt
 # from torch import nn
 # from torch.utils.data import DataLoader
 # from torchvision import datasets, transforms
 
-workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+#workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+workingDir = '/home/millerjs/Desktop/Gameplays/'
 
 def tempModifyDoc(combined_vals):
     for line in combined_vals:
@@ -107,9 +113,9 @@ def dataModAndGrabPerFolder(folderVal):
                 return combined_vals, image_array
 
 
-def frameSort(image_array, combined_vals):
+def frameSort(image_array, combined_vals, key_inc=3.75):
     total_key_frames = combined_vals.shape[0]
-    key_inc = 3.75
+    image_array_limit = image_array.shape[0]
     key_index_float = 0
     final_video_frames = []
 
@@ -144,13 +150,11 @@ def buildTrainingModel(datastrings, inputimages):
         x = inputimages[i:(i + group_size)]
         if x.shape[0] == group_size:
             super_list_frame.append(x)
-            print(f'shape x: {x.shape}')
 
     for i in range(0, len(datastrings), group_size):
         y = datastrings[i:(i + group_size)]
         if y.shape[0] == group_size:
             super_list_label.append(y)
-            print(f'shape y: {y.shape}')
 
     np_list_frame = np.array(super_list_frame)
 
@@ -166,6 +170,55 @@ def buildTrainingModel(datastrings, inputimages):
     print('Data Collected')
 
     return data_zip
+
+# I separated this out so that I can mess with this without breaking my other frame sort
+def frameSortTesting(image_array, combined_vals, key_inc=3.75):
+    total_key_frames = combined_vals.shape[0]
+    image_array_limit = image_array.shape[0]
+    key_index_float = 0
+    final_video_frames = []
+
+    for kindex in range(total_key_frames):
+        vid_index = math.floor(key_index_float)
+        if vid_index < image_array_limit:
+            final_video_frames.append(image_array[vid_index])
+            key_index_float += key_inc
+
+    return final_video_frames
+
+#This method manages and sets up the testing model to prevent overworking the GPU
+def buildTestingModel(datastrings, inputimages):
+    print('Starting to Develop the Testing Model...')
+    group_size = 50
+    #superLists are list that divide training sets into groups of 60 (variable) frames and labels
+    super_list_frame = []
+    super_list_label = []
+
+    for i in range(0, len(inputimages), group_size):
+        x = inputimages[i:(i + group_size)]
+        if x.shape[0] == group_size:
+            super_list_frame.append(x)
+
+    for i in range(0, len(datastrings), group_size):
+        y = datastrings[i:(i + group_size)]
+        if y.shape[0] == group_size:
+            super_list_label.append(y)
+
+    np_list_frame = np.array(super_list_frame)
+
+    print(f'pm: {np_list_frame.shape}')
+
+    imageset = tf.data.Dataset.from_tensor_slices(np_list_frame)
+    dataset = tf.data.Dataset.from_tensor_slices(super_list_label)
+
+    data_map = imageset.map(loadAsImg)
+
+    data_zip = tf.data.Dataset.zip((data_map, dataset))
+
+    print('Data Collected')
+
+    return data_zip
+
 
 #This method builds and compiles a model
 def buildModel(inputShape, classCnt, saveFile=None):
@@ -210,7 +263,7 @@ def buildModel(inputShape, classCnt, saveFile=None):
 
         model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['binary_accuracy'])
 
-        epochs = 200
+        epochs = 150
         batch_size = 1
 
     return model, epochs, batch_size
@@ -220,6 +273,7 @@ def main():
     global workingDir
     save_file = None
     model_loc = None
+    frame_window = 50
 
     if len(sys.argv) >= 2:
         workingDir = sys.argv[1]
@@ -246,6 +300,7 @@ def main():
         else:
             model_loc = None
 
+    #training
 
     combinded_vals, image_array = dataModAndGrabPerFolder('GP2')
 
@@ -257,10 +312,10 @@ def main():
 
     data_zipped = buildTrainingModel(combinded_vals, numpy_final_video_frames)
 
-    model, epochs, batch_size = buildModel((50, 426, 240, 3), 4, model_loc)
+    model, epochs, batch_size = buildModel((50, 240, 426, 3), 4, model_loc)
 
     curr_time = datetime.now()
-    model_str = f'/ModelFiles/InputCNN-{curr_time.year}-{curr_time.month}-{curr_time.day}_{curr_time.hour}_{curr_time.minute}.keras'
+    model_str = f'./ModelFiles/InputCNN-{curr_time.year}-{curr_time.month}-{curr_time.day}_{curr_time.hour}_{curr_time.minute}.keras'
     print(f'YEAR: {curr_time.year} | MONTH: {curr_time.month} | DAY: {curr_time.day} | HOUR: {curr_time.hour} | MIN: {curr_time.minute}')
     print(model_str)
     model.save(model_str)
@@ -269,17 +324,60 @@ def main():
 
     start_time = int(datetime.now().timestamp())
 
-    model.fit(data_zipped, epochs=epochs, batch_size=batch_size)
-
-    print(model.predict())
+    history = model.fit(data_zipped, epochs=epochs, batch_size=batch_size)
 
     end_time = int(datetime.now().timestamp())
+    print(f'Train Time: {end_time - start_time}')
+
+    hist_df = pd.DataFrame(history.history)
+
+    model_train_file=f'./results/history_model_frame_{frame_window}.csv'
+
+    with open(model_train_file, "wb") as file:
+        hist_df.to_csv(file)
+
+    #evaluation
+    new_file_combined, new_image_array = dataModAndGrabPerFolder('GP3')
+
+    new_final_video_frames = frameSortTesting(new_image_array, new_file_combined)
+
+    new_numpy_final_video_frames = np.array(new_final_video_frames)
+
+    print(f'new_numpy_final_video_frame shape {numpy_final_video_frames.shape}')
+
+    new_data_zipped = buildTestingModel(new_file_combined, new_numpy_final_video_frames)
+
+    new_data_zipped = new_data_zipped.batch(batch_size)
+
+    test_start_time = int(datetime.now().timestamp())
+
+    results = model.evaluate(new_data_zipped)
+    print(results)
+
+    with open(f'./results/model_results_{frame_window}.txt', "a") as file:
+        file.write(model.metrics_names)
+        file.write('\n')
+        file.write(results)
+
+    '''
+    # Useful for individual predictions
+    #x = (50, 426, 240, 3)
+    for batch_data in data_zipped:
+        video, ground_labels = batch_data
+        print("INPUT VIDEO:", video.shape)
+        print("GROUND:", ground_labels.shape)
+        pred_labels = model.predict(video)
+        print("PRED:", pred_labels.shape)
+    '''
+
+    test_end_time = int(datetime.now().timestamp())
 
     # | ||
     # || |_
 
+    # Save model new script test
 
-    print(f'Run Time: {end_time - start_time}')
+    print(f'Test Time: {test_end_time - test_start_time}')
 
 
 if __name__ == '__main__':

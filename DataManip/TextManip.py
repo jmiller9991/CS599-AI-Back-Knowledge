@@ -11,7 +11,8 @@
 import os
 import sys
 
-workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+#workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+workingDir = '/home/millerjs/Desktop/Gameplays'
 
 #This method will modify the WK_ files in each GP# folder
 def modifyWMK(fileIn, fileOut):
@@ -22,12 +23,8 @@ def modifyWMK(fileIn, fileOut):
 
     for line in fileRead:
         array = line.split(",")
-        array.pop(0)
-        array.pop(18)
-        array.pop(18)
-        array.pop(18)
-        array.pop(18)
-        array.pop(18)
+        array = array[:-25]
+        array = array[1:5]
 
         worksarray = []
 
@@ -48,7 +45,7 @@ def modifyWMK(fileIn, fileOut):
 
         str = str[:-1]
 
-        str = str[:7]
+        #str = str[:7]
 
         str += '\n'
 
@@ -63,11 +60,11 @@ def modifyWMK(fileIn, fileOut):
 #This method searches all folders in a provided working directory for folders starting in GP
 #For all folders with GP as the start, it will get the files starting with WK and WM as strings and then makes an output
 #string where the files will start with MWK and MWM respectively
-def searchWMKFiles():
+def searchWMKFiles(starts_with):
     wmk_files_in = []
     wmk_files_out = []
     for x in os.listdir(workingDir):
-        if x.startswith('GP'):
+        if x.startswith(starts_with):
             dirString = os.path.join(workingDir, x)
             print('Looking at folder ' + dirString)
             for files in os.listdir(os.path.join(workingDir, x)):
@@ -86,7 +83,7 @@ def main():
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
-    wmk_files_in, wmk_files_out = searchWMKFiles()
+    wmk_files_in, wmk_files_out = searchWMKFiles(starts_with='GP3')
 
     for i in range(len(wmk_files_in)):
         modifyWMK(wmk_files_in[i], wmk_files_out[i])

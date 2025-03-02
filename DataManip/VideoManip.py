@@ -12,7 +12,8 @@ import sys
 import os
 import math
 
-workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+#workingDir = 'C:\\Users\\jdude\\Desktop\\Spring2021\\CS599\\Gameplays'
+workingDir = '/home/millerjs/Desktop/Gameplays/'
 
 #This method will get the videos and save them as an array or arrays
 def getAndModifyVideos():
