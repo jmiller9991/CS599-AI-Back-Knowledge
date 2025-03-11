@@ -354,10 +354,22 @@ def main():
     results = model.evaluate(new_data_zipped)
     print(results)
 
+    str = ''
+    for item in model.metrics_names:
+        str += f'{item},'
+
+    str.rstrip(",")
+    str += '\n'
+
+    for item in results:
+       str += f'{item},'
+
+    str.rstrip(",")
+
+    print(str)
+
     with open(f'./results/model_results_{frame_window}.txt', "a") as file:
-        file.write(model.metrics_names)
-        file.write('\n')
-        file.write(results)
+        file.write(str)
 
     '''
     # Useful for individual predictions

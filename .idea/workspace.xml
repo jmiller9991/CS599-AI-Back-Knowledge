@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="">
+    <list default="true" id="84a1059a-f897-47b7-bb5e-86eb7b29e33b" name="Default Changelist" comment="Helped fix the model and revamped some of the text manipulation and video manuplation">
       <change afterPath="$PROJECT_DIR$/Networks/ModelFiles/InputCNN-2025-2-28_16_36.keras" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MillerJ_CS599_Thesis_Code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Networks/ModelFiles/InputCNN-2025-3-5_18_40.keras" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Networks/results/history_model_frame_50.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Networks/results/model_results_50.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManip/TextManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/TextManip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManip/VideoManip.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataManip/VideoManip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Networks/InputCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networks/InputCNN.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +32,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jmiller9991"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jmiller9991/CS599-AI-Back-Knowledge.git",
+    "accountId": "c37b86b6-e7fe-4110-9678-0555d021a752"
+  }
+}]]></component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
       <set>
@@ -565,7 +575,7 @@
       <option name="project" value="LOCAL" />
       <updated>1727302349883</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -585,7 +595,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/yolov3-tf2" />
     </ignored-roots>
-    <MESSAGE value="Designed the model, it is currently untested." />
     <MESSAGE value="Added all appropriate methods." />
     <MESSAGE value="Begun work on file modification. Needs finishing but ran into a brief logic snag." />
     <MESSAGE value="Begun work on data collection. Need ot finish by appeanding the array to a 2D array and then collect video frame data. Then, I need to work on the training loop." />
@@ -610,6 +619,7 @@
     <MESSAGE value="Updated DenseOpticalFlow code and added MovementGuesser.py" />
     <MESSAGE value="Fixed text manip for movement, and added InputCNN changes" />
     <MESSAGE value="removed large file from git through reverting to old commit and adding change" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed large file from git through reverting to old commit and adding change" />
+    <MESSAGE value="Helped fix the model and revamped some of the text manipulation and video manuplation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Helped fix the model and revamped some of the text manipulation and video manuplation" />
   </component>
 </project>
