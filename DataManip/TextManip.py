@@ -16,19 +16,25 @@ workingDir = '/home/millerjs/Desktop/Gameplays'
 
 #This method will modify the WK_ files in each GP# folder
 def modifyWMK(fileIn, fileOut):
-    win_len = 1920
-    win_width = 1080
+    # Create a file reader and writer
     fileRead = open(fileIn, "r")
     fileWrite = open(fileOut, "w+")
 
+    # loop through all lines in read file
     for line in fileRead:
+        # split the line and get the last 25 data points, then only show values 1-5
         array = line.split(",")
         array = array[:-25]
         array = array[1:5]
 
+        # a temporary array to hold data
         worksarray = []
 
+        # look at the values in the line (now saved as variable array) and do manipulations
         for val in array:
+            # removes new line character then checks if value is U or D and change it to 0 or 1 respectively
+            # also values that are not digits, replace it with 1
+            # lastly, put any numerical value on line
             val = val.rstrip('\n')
             if val == 'U' or val == 'None':
                 worksarray.append('0')
@@ -39,6 +45,7 @@ def modifyWMK(fileIn, fileOut):
             else:
                 worksarray.append(val)
 
+        # convert array to string and write line to write file
         str = ''
         for x in worksarray:
             str += x + ','
@@ -51,6 +58,7 @@ def modifyWMK(fileIn, fileOut):
 
         fileWrite.writelines(str)
 
+    # close read and write files at end of the loop
     fileRead.close()
     fileWrite.close()
 
@@ -80,12 +88,16 @@ def searchWMKFiles(starts_with):
 def main():
     global workingDir
 
+    # get workingdir from arguments if available
     if len(sys.argv) > 2:
         workingDir = sys.argv[1]
 
+    # search for file to modify and create a location string for the output
     wmk_files_in, wmk_files_out = searchWMKFiles(starts_with='GP3')
 
+    # for all files in the list of files in
     for i in range(len(wmk_files_in)):
+        # modify the file and save it to the output
         modifyWMK(wmk_files_in[i], wmk_files_out[i])
 
 if __name__ == '__main__':
